@@ -8,7 +8,7 @@
     "superstatic": "^7.1.0"
   },
   "scripts": {
-    "start": "superstatic src",
-    "test": "cypress open"
+    "start": "superstatic src", 
+    "test": "cypress open" 
   }
 }
