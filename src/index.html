@@ -17,15 +17,32 @@
 
    <script>
     const emailInput = document.querySelector('input[name=email]');
+    const firstNameInput = document.querySelector('input[name=firstName]');
+    const passwordInput = document.querySelector('input[name=password]');
     const button = document.getElementById('submit-button');
     const messageElement = document.getElementById('confirmation-message');
     button.addEventListener('click', ()=>{
-        if (emailInput.value == '') {
-            messageElement.innerText = "Hey! you need to give us your Email adress!";
-        } else {
+
+        if (firstNameInput.value == '') {
+            messageElement.innerText = "Hey! you need to give us your Name!"
+        } 
+
+        else if (emailInput.value == '') {
+            messageElement.innerText = "Hey! you need to give us your Email adress!"
+        }
+        
+        else if (passwordInput.value == '') {
+            messageElement.innerText = "You need to select a Password"
+        }
+
+        else {
             messageElement.innerText = 'Thank you for signing up!';
         }
+
+
+
     });
+    
     </script>
 </body>
 </html>

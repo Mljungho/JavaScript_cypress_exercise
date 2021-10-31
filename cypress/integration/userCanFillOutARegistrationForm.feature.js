@@ -26,7 +26,7 @@ describe('User that fills out a registration form', () => {
 describe('with some fields missing', () => {
     before(() => {
         cy.visit('/')
-        cy.get('input[name=firstName]').type('Mathias')
+        cy.get('input[name=firstName]').type('MathiasLjungholm')
         //cy.get('input[name=email]').type('Mathias@gmail.com')
         cy.get('input[name=password]').type('my_secret_password')
         cy.get('input[id=submit-button]').click()
@@ -40,6 +40,39 @@ describe('with some fields missing', () => {
      });
     });
 
+    describe('with some fields missing name', () => {
+        before(() => {
+            cy.visit('/')
+            //cy.get('input[name=firstName]').type('MathiasLjungholm')
+            cy.get('input[name=email]').type('Mathias@gmail.com')
+            cy.get('input[name=password]').type('my_secret_password')
+            cy.get('input[id=submit-button]').click()
+        });
+    
+        it('is expected to see an error message', () => {
+            cy.get('div[id=confirmation-message]').should(
+                "contain.text",
+                "Hey! you need to give us your Name!"
+            );
+         });
+        });
+
+        describe('with some fields missing password', () => {
+            before(() => {
+                cy.visit('/')
+                cy.get('input[name=firstName]').type('MathiasLjungholm')
+                cy.get('input[name=email]').type('Mathias@gmail.com')
+                //cy.get('input[name=password]').type('my_secret_password')
+                cy.get('input[id=submit-button]').click()
+            });
+        
+            it('is expected to see an error message', () => {
+                cy.get('div[id=confirmation-message]').should(
+                    "contain.text",
+                    "You need to select a Password"
+                );
+             });
+            });
 
 });
 
